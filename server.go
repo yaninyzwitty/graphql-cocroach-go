@@ -24,7 +24,7 @@ func main() {
 	defer cancel()
 	file, err := os.Open("config.yaml")
 	if err != nil {
-		slog.Error("failed to open config.yaml")
+		slog.Error("failed to open config.yaml ")
 		os.Exit(1)
 	}
 
