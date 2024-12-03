@@ -6,7 +6,10 @@ toolchain go1.22.9
 
 require (
 	github.com/99designs/gqlgen v0.17.57
+	github.com/go-chi/chi v1.5.5
+	github.com/go-chi/chi/v5 v5.1.0
 	github.com/vektah/gqlparser/v2 v2.5.19
+	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (
