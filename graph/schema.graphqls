@@ -1,0 +1,106 @@
+# User type definition
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  posts: [Post!]!
+  comments: [Comment!]!
+}
+
+# Post type definition
+type Post {
+  id: ID!
+  title: String!
+  content: String!
+  author: User!
+  comments: [Comment!]!
+  likes: [Like!]!
+}
+
+# Comment type definition
+type Comment {
+  id: ID!
+  text: String!
+  post: Post!
+  author: User!
+}
+
+# Like type definition
+type Like {
+  id: ID!
+  user: User!
+  post: Post!
+}
+
+# Query type definition
+type Query {
+  getUser(id: ID!): User
+  listUsers: [User!]!
+
+  getPost(id: ID!): Post
+  listPosts: [Post!]!
+
+  getComment(id: ID!): Comment
+  listComments(postId: ID!): [Comment!]!
+
+  listLikes(postId: ID!): [Like!]!
+}
+
+# Mutation type definition
+type Mutation {
+  # User mutations
+  createUser(input: NewUser!): User!
+  updateUser(id: ID!, input: UpdateUser!): User!
+  deleteUser(id: ID!): Boolean!
+
+  # Post mutations
+  createPost(input: NewPost!): Post!
+  updatePost(id: ID!, input: UpdatePost!): Post!
+  deletePost(id: ID!): Boolean!
+
+  # Comment mutations
+  createComment(input: NewComment!): Comment!
+  updateComment(id: ID!, input: UpdateComment!): Comment!
+  deleteComment(id: ID!): Boolean!
+
+  # Like mutations
+  likePost(input: NewLike!): Like!
+  unlikePost(id: ID!): Boolean!
+}
+
+# Input types for mutations
+input NewUser {
+  name: String!
+  email: String!
+}
+
+input UpdateUser {
+  name: String
+  email: String
+}
+
+input NewPost {
+  title: String!
+  content: String!
+  authorId: ID!
+}
+
+input UpdatePost {
+  title: String
+  content: String
+}
+
+input NewComment {
+  text: String!
+  postId: ID!
+  authorId: ID!
+}
+
+input UpdateComment {
+  text: String
+}
+
+input NewLike {
+  userId: ID!
+  postId: ID!
+}
