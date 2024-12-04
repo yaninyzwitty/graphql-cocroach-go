@@ -8,11 +8,21 @@ import (
 )
 
 type Config struct {
-	Server Server `yaml:"server"`
+	Server   Server   `yaml:"server"`
+	Database Database `yaml:"database"`
 }
 
 type Server struct {
 	Port int `yaml:"port"`
+}
+
+type Database struct {
+	User       string `yaml:"user"`
+	Host       string `yaml:"host"`
+	Port       int    `yaml:"port"`
+	Database   string `yaml:"database"`
+	SSLMode    string `yaml:"sslmode"`
+	MaxRetries int    `yaml:"max_retries"`
 }
 
 func (c *Config) LoadConfig(file io.Reader) error {
