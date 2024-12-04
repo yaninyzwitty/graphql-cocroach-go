@@ -1,2 +1,9 @@
 server:
   port: 3000
+database:
+  user: miriam
+  host: small-fowl-5810.j77.aws-eu-central-1.cockroachlabs.cloud
+  database: defaultdb
+  port: 26257
+  sslmode: verify-full
+  max_retries: 30
