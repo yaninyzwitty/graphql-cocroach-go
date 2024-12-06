@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS users (
+    id STRING NOT NULL,
+    name STRING NOT NULL,
+    email STRING UNIQUE,
+    CONSTRAINT "primary" PRIMARY KEY ( id ASC)
+);
