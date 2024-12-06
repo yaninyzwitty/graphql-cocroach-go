@@ -82,7 +82,7 @@ func main() {
 
 	resolvers := &graph.Resolver{
 		DB:            pool,
-		SocialService: &socialService,
+		SocialService: socialService,
 	}
 
 	srv := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: resolvers}))
