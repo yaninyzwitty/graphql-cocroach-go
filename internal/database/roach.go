@@ -53,7 +53,6 @@ func NewPgxPool(ctx context.Context, cfg *DatabaseCfg, maxRetries int) (*pgxpool
 		config.MaxConns = 30
 		config.MaxConnIdleTime = 5 * time.Minute
 		config.HealthCheckPeriod = 1 * time.Minute
-		config.ConnConfig.TLSConfig = nil
 		config.MinConns = 1
 
 		// Try to create the connection pool

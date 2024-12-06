@@ -18,6 +18,7 @@ import (
 	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/yaninyzwitty/graphql-cocroach-go/graph"
 	"github.com/yaninyzwitty/graphql-cocroach-go/internal/database"
+	"github.com/yaninyzwitty/graphql-cocroach-go/internal/service"
 	"github.com/yaninyzwitty/graphql-cocroach-go/pkg"
 )
 
@@ -77,7 +78,14 @@ func main() {
 	router := chi.NewRouter()
 	router.Use(middleware.Logger)
 
-	srv := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{}}))
+	socialService := service.NewSocialService()
+
+	resolvers := &graph.Resolver{
+		DB:            pool,
+		SocialService: &socialService,
+	}
+
+	srv := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: resolvers}))
 
 	router.Handle("/", playground.Handler("GraphQL playground", "/query"))
 	router.Handle("/query", srv)
