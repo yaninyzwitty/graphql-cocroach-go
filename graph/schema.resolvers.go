@@ -23,57 +23,57 @@ func (r *likeResolver) Post(ctx context.Context, obj *model.Like) (*model.Post, 
 
 // CreateUser is the resolver for the createUser field.
 func (r *mutationResolver) CreateUser(ctx context.Context, input model.NewUser) (*model.User, error) {
-	panic(fmt.Errorf("not implemented: CreateUser - createUser"))
+	return r.SocialService.CreateUser(ctx, input)
 }
 
 // UpdateUser is the resolver for the updateUser field.
 func (r *mutationResolver) UpdateUser(ctx context.Context, id string, input model.UpdateUser) (*model.User, error) {
-	panic(fmt.Errorf("not implemented: UpdateUser - updateUser"))
+	return r.SocialService.UpdateUser(ctx, input, id)
 }
 
 // DeleteUser is the resolver for the deleteUser field.
 func (r *mutationResolver) DeleteUser(ctx context.Context, id string) (bool, error) {
-	panic(fmt.Errorf("not implemented: DeleteUser - deleteUser"))
+	return r.SocialService.DeleteUser(ctx, id)
 }
 
 // CreatePost is the resolver for the createPost field.
 func (r *mutationResolver) CreatePost(ctx context.Context, input model.NewPost) (*model.Post, error) {
-	panic(fmt.Errorf("not implemented: CreatePost - createPost"))
+	return r.SocialService.CreatePost(ctx, input)
 }
 
 // UpdatePost is the resolver for the updatePost field.
 func (r *mutationResolver) UpdatePost(ctx context.Context, id string, input model.UpdatePost) (*model.Post, error) {
-	panic(fmt.Errorf("not implemented: UpdatePost - updatePost"))
+	return r.SocialService.UpdatePost(ctx, input, id)
 }
 
 // DeletePost is the resolver for the deletePost field.
 func (r *mutationResolver) DeletePost(ctx context.Context, id string) (bool, error) {
-	panic(fmt.Errorf("not implemented: DeletePost - deletePost"))
+	return r.SocialService.DeletePost(ctx, id)
 }
 
 // CreateComment is the resolver for the createComment field.
 func (r *mutationResolver) CreateComment(ctx context.Context, input model.NewComment) (*model.Comment, error) {
-	panic(fmt.Errorf("not implemented: CreateComment - createComment"))
+	return r.SocialService.CreateComment(ctx, input)
 }
 
 // UpdateComment is the resolver for the updateComment field.
 func (r *mutationResolver) UpdateComment(ctx context.Context, id string, input model.UpdateComment) (*model.Comment, error) {
-	panic(fmt.Errorf("not implemented: UpdateComment - updateComment"))
+	return r.SocialService.UpdateComment(ctx, input, id)
 }
 
 // DeleteComment is the resolver for the deleteComment field.
 func (r *mutationResolver) DeleteComment(ctx context.Context, id string) (bool, error) {
-	panic(fmt.Errorf("not implemented: DeleteComment - deleteComment"))
+	return r.SocialService.DeleteComment(ctx, id)
 }
 
 // LikePost is the resolver for the likePost field.
 func (r *mutationResolver) LikePost(ctx context.Context, input model.NewLike) (*model.Like, error) {
-	panic(fmt.Errorf("not implemented: LikePost - likePost"))
+	return r.SocialService.LikePost(ctx, input)
 }
 
 // UnlikePost is the resolver for the unlikePost field.
 func (r *mutationResolver) UnlikePost(ctx context.Context, id string) (bool, error) {
-	panic(fmt.Errorf("not implemented: UnlikePost - unlikePost"))
+	return r.SocialService.UnlikePost(ctx, id)
 }
 
 // Author is the resolver for the author field.
@@ -93,12 +93,12 @@ func (r *postResolver) Likes(ctx context.Context, obj *model.Post) ([]*model.Lik
 
 // GetUser is the resolver for the getUser field.
 func (r *queryResolver) GetUser(ctx context.Context, id string) (*model.User, error) {
-	panic(fmt.Errorf("not implemented: GetUser - getUser"))
+	return r.Resolver.SocialService.GetUser(ctx, id)
 }
 
 // ListUsers is the resolver for the listUsers field.
 func (r *queryResolver) ListUsers(ctx context.Context) ([]*model.User, error) {
-	panic(fmt.Errorf("not implemented: ListUsers - listUsers"))
+	return r.Resolver.SocialService.GetUsers(ctx)
 }
 
 // GetPost is the resolver for the getPost field.
