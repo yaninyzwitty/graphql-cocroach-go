@@ -78,7 +78,7 @@ func main() {
 	router := chi.NewRouter()
 	router.Use(middleware.Logger)
 
-	socialService := service.NewSocialService()
+	socialService := service.NewSocialService(pool)
 
 	resolvers := &graph.Resolver{
 		DB:            pool,
